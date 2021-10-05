@@ -45,7 +45,7 @@
 								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Sort by</a>
 								<div class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="assets\search.php">fuck</a>
+									<a class="dropdown-item" href="assets\search.php">rating</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="assets\search.php">distance</a>
 								</div>
