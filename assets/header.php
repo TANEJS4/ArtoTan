@@ -51,7 +51,16 @@
 								</div>
 							</li>
 						</ul>
+<<<<<<< Updated upstream
 						<form class="form-inline my-2 my-lg-2">
+=======
+						<span class="navbar-text"> 
+							<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+								Login
+							</button>
+						</span>
+						<!-- <form class="form-inline my-2 my-lg-2">
+>>>>>>> Stashed changes
 							<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> 
 							<button class="btn btn-outline-success my-2 my-sm-0" type="button" id="searchButton" > Search</button>
 						</form>

@@ -23,6 +23,7 @@
 		<div id="new-user" class="card bg-dark text-white text-center mx-auto my-2" style="width: 18rem ">
 			<div class="card-header">
 				Login
+<<<<<<< Updated upstream
 			</div>
 			<div class="card-body">	
 				<form >
@@ -36,6 +37,16 @@
 						<div class="form-group">
 							<input id="user-psw" class="form-control" type="password" placeholder="Password">
 
+=======
+			</button>
+			<!-- start of collapsable object -->
+			<div class="collapse" id="collapseExample" style="background-color:#202428">
+			<!-- card body -->
+				<div class="card card-body" style="background: #202428;">		
+					<div id="new-user" class="card bg-dark text-white text-center mx-auto my-2" style="width: 18rem ">
+						<div class="card-header">
+							Login
+>>>>>>> Stashed changes
 						</div>
 						<div class="form-group">
 							<button class="btn btn-secondary" type="submit">login</button>
