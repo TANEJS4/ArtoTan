@@ -27,7 +27,7 @@
 							<form >
 								<div class="form-group">
 									<div class="input-group py-2">
-										<span class="input-group-text" id="basic-addon1">@</span>
+										<!-- <span class="input-group-text" id="basic-addon1">@</span> -->
 										<input name="user-id" class="form-control" placeholder="Email" type="email" aria-describedby="basic-addon1">
 									</div> 
 									<br>
