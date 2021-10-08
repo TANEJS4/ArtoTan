@@ -7,4 +7,7 @@ favicon.ico
 artotan1/
 img/module_table_bottom.png
 img/module_table_top.png
-.idea/*
+.idea
+index-work.html
+.idea/workspace.xml
+.idea/vcs.xml
