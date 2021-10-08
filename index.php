@@ -49,10 +49,31 @@
 						</div>
 					</div>
 				</div>
+				<div class="row row-cols-1">
+					<div class="col-md-auto mx-auto">
+						<div class="col-lg-auto">
+							<div class="input-group">
+									<button class="btn btn-outline-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										Find shops by
+									</button>
+									<div class="dropdown-menu">
+										<a class="dropdown-item" href="./assets/result.php">distance</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="./assets/result.php">rating</a>
+									</div>
+							</div>
+						</div>
+					</div>
+				</div>>
 			</div>
 		</main>
 		<!--  footer file -->
 		<?php require("./assets/footer.php"); ?>
 		</div>
+		<script type="text/javascript">
+			document.getElementById("searchButton").onclick = function () {
+			location.href = "./assets/result.php";
+			};
+		</script>
 	</body>
 </html>
