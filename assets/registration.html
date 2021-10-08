@@ -60,7 +60,7 @@
 							<div class="form-group">
 								<div class="input-group py-2 mb-1">
 									<!-- <span class="input-group-text" id="basic-addon1">@</span> -->
-									<input name="user-id" class="form-control" placeholder="Email" type="email" aria-describedby="basic-addon1">
+									<input name="user-id" class="form-control" placeholder="Email" type="email">
 								</div>
 								<div class="form-group mb-3">
 									<label class="form-check-label" for="DOBuser">date of birth</label>
@@ -72,7 +72,7 @@
 									<input id="user-psw" class="form-control" type="password" placeholder="Password">
 									</div>
 								<div class="form-group">
-											<input type="checkbox" class="form-check-input" id="staycheckin">
+										<input type="checkbox" class="form-check-input" id="staycheckin">
 									<label class="form-check-label" for="exampleCheck1">Remember me?</label>
 								</div>
 								<div class="form-group mb-2">
@@ -108,20 +108,22 @@
 			</li>
 		</ul>
 		<span class="navbar-text"> 
-			<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			<button class="btn btn-primary" type="button"  aria-expanded="false" >
 				Login
 			</button>
 		</span>
 		
 		</footer>
+
+		<script>
+			document.getElementById("searchButton").onclick = function () {
+			location.href = "/assets/result_sample.html";
+			};
+			document.getElementById("login").onclick = function () {
+			location.href = "/assets/registration.html";
+			};
+		</script>
 	</body>
 
-	<script>
-		document.getElementById("searchButton").onclick = function () {
-		location.href = "/assets/result_sample.html";
-		};
-		document.getElementById("login").onclick = function () {
-		location.href = "/assets/registration.html";
-		};
-	</script>
+
 </html>
