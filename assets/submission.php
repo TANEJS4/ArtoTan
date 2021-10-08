@@ -19,7 +19,7 @@
         <?php require("./header.php");?>
 
         <!-- Body -->
-        <div class="container-fluid text-center text-light">
+        <div class="container text-light">
             <div class="d-flex justify-content-center">
                 <h2><u>Add Location</u></h2>
             </div>
@@ -33,25 +33,28 @@
                     <label for="formLocationDescription">Location Description:</label>
                     <input type="text" class="form-control" id="formLocationDescription" placeholder="Location Description">
                 </div>
-                <div class="form-group">
-                    <label for="formLocationName">Location Coordinates:</label>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Latitude">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputLatitude">Latitude:</label>
+                        <input type="text" class="form-control" id="inputLatitude" placeholder="Latitude">
                     </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Longitude">
+                    <div class="form-group col-md-6">
+                        <label for="inputLongitude">Latitude:</label>
+                        <input type="text" class="form-control" id="inputLongitude" placeholder="Longitude">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="customFile">Upload Location Image:</label>
                     <input type="file" class="form-control" id="customFile" />
                 </div>
-                <button type="submit" class="btn btn-primary my-1">Submit</button>
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary my-1">Submit</button>
+                </div>
             </form>
         </div>
 
         <!-- Footer -->
-        <?php require("./footer.php"); ?>
+        <?php require("./footer.php");?>
 
     </div>
 </body>

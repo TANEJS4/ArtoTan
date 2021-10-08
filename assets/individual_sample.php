@@ -20,7 +20,7 @@
         <?php require("./header.php");?>
 
         <!-- Body -->
-        <div class="container-fluid text-center text-light">
+        <div class="container text-center text-light">
             <div class="d-flex justify-content-center">
                 <h2><u>Decently Ok Coffee Shop</u></h2>
             </div>
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Footer -->
-        <?php require("./footer.php"); ?>
+        <?php require("./footer.php");?>
 
     </div>
 </body>
