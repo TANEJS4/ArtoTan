@@ -21,8 +21,8 @@
 
         <!-- Body -->
         <div class="container-fluid text-center text-light">
-            <div class="row">
-
+            <div class="d-flex justify-content-center">
+                <h2><u>Decently Ok Coffee Shop</u></h2>
             </div>
 
             <div class="row">
@@ -32,7 +32,7 @@
             <div class="rounded mx-auto d-block">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h2>Review 1</h2>
+                        <h3>Review 1</h3>
                         <p>
                             "Decent spot"
                         </p>
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <h2>Review 2</h2>
+                        <h3>Review 2</h3>
                         <p>
                             "Great place! Will definitely visit again!"
                         </p>
@@ -56,7 +56,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <h2>Review 3</h2>
+                        <h3>Review 3</h3>
                         <p>
                             "Terrible customer service"
                         </p>
