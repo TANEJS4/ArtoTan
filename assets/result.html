@@ -16,8 +16,15 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<<<<<<< Updated upstream:assets/result.html
 		<!-- header -->
 		<header >
+=======
+		<!-- in-house scripts -->
+		<script src="./assets/script.js"></script>
+		<!-- header doc same as search.html -->
+		<header>
+>>>>>>> Stashed changes:assets/result_sample.html
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
 				<a class="navbar-brand" href="../index.html">ArtoTan</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +46,7 @@
 			</nav>
 		</header>
 		<!--  Body -->
+<<<<<<< Updated upstream:assets/result.html
 		<main class=" container text-left">
 			<div class="row ">
 				<div class="col-2">
@@ -55,6 +63,34 @@
 							<tbody>
 								<tr>
 									<th scope="row">A</th>
+=======
+		<!-- container-flex allows its sub-components(d-flex and row-col) to move below instead of having scroll -->
+		<main class=" container-flex text-left mx-3 my-3">
+			<div class="d-flex justify-content-center ">
+				<div class="row">
+					<div class="col-lg-4">
+						<div class="table-responsive">
+							<button type="button" class="btn btn-primary" onclick="getUserLocation()"> click </button>
+							<p class="text-muted" id="LocationLabel"></p>
+							<table class="table table-hover table-bordered table-dark my-2">
+								<thead>
+									<tr>
+									<th scope="col">#</th>
+									<th scope="col">
+										Info
+									</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row">A</th>
+											<td>
+												<a class="nav-link" href="./individual_sample.html">Decently Ok Coffee Shop<span class="sr-only">(current)</span></a>
+											</td>
+									</tr>
+									<tr>
+										<th scope="row">B</th>
+>>>>>>> Stashed changes:assets/result_sample.html
 										<td>
 											<table >
 												<tr><td>name1</td></tr>
