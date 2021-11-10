@@ -16,7 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="/assets/style.css" />
 		<script src="/assets/script.js"></script>
 	</head>
-	<body class="bg-secondary" >
+	<body class="bg-secondary">
 
 	<!-- JS required for Bootstrap-->	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -51,63 +51,55 @@
 		</nav>
 	</header>
 
-	<!-- main -->
-	<main>
-		<div class="container text-white">
-			<div class="row row-cols-1">
-				<!-- added p-lg-5 to add space on top (better job than margin for us) -->
-				<div class="col-md-auto p-lg-5 mx-auto my-2">
-					<div class="display-4">
-						Find coffee!					
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row row-cols-1">
-				<div class="col-md-auto p-lg-5 mx-auto">
-					<div class="col-lg-auto">
-						<!-- Form to send it to database later on -->
-						<form class="form-inline">
-							<div class="input-group">
-								<input class="form-control form control" type="search" placeholder="Search" aria-label="Search for coffee shops"> 
-								<button class="btn btn-dark mx-2" type="button" id="searchButton" > Search</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="row row-cols-1">
-				<div class="col-md-auto mx-auto">
-					<div class="col-lg-auto">
-						<div class="input-group">
-								<button class="btn btn-dark btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Find shops by
-								</button>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="/assets/result_sample.html">distance</a>
-									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="/assets/result_sample.html">rating</a>
-								</div>
-						</div>
-					</div>
-				</div>
+	<main >
+		<div class="d-flex justify-content-center ">
+			<div class="row">
+				
+				
 			</div>
 		</div>
 	</main>
-	<!-- MAPS 
-	<div class="container-sm" id="map">
-	<div id="map" >
+
+	<!-- MAPS -->
+	<div class="map-canvas" id="map">
+				<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 		<script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&v=weekly"
 		async
 		></script>
 	</div>
+	<!-- </div> -->
+	<div class="container">
+			<div class="table-responsive">
+		<table class="table table-hover table-bordered table-dark my-2">
+			<thead>
+				<tr>
+				<th scope="col">#</th>
+				<th scope="col">
+					Info
+				</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">A</th>
+						<td>
+							<button id="row1_label" class="btn btn-link" onclick="poiOne()">Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
+						</td>
+				</tr>
+				<tr>
+					<th scope="row">B</th>
+					<td>
+						<button  id="row2_label" class="btn btn-link" onclick="poiTwo()">Another Coffee Shop<span class="sr-only">(current)</span></button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	-->
+	</div>
 
 
-	<footer class="navbar navbar-dark bg-dark fixed-bottom" >
+	<footer class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between" style="position: absolute; bottom: 0; width:100%">
 		<ul class="nav justify-content-center">
 			<li class="nav-item">
 			<a class="nav-link active" aria-current="page" href="#">ArtoTan Inc. Copyright &copy; 2021</a>

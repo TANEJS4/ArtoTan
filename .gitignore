@@ -1,7 +1,5 @@
 
-xampp/.version
-xampp/.modell
-xampp/.modell-usb
+xampp/*
 bitnami.css
 favicon.ico
 artotan1/
@@ -9,5 +7,7 @@ img/module_table_bottom.png
 img/module_table_top.png
 .idea
 index-work.html
-.idea/workspace.xml
-.idea/vcs.xml
+.idea/*
+misc/*
+assets1/*
+index1.html

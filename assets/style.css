@@ -1,41 +1,17 @@
-.checked {
-    color: yellow;
-} */
-/*! Google maps  */
-/* Always set the map height explicitly to define the size of the div  element that contains the map. */
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
 #map {
-  overflow:hidden;
-  height: 100%;
-   width: 100%;
-  margin: 0;
-  padding: 0;
-
+  margin-top: 10px;
+  margin-left: 10% ;
+  margin-right: 10%  ;
+  height: 50%;
 }
 
-html,
-body,
-.container-fluid,
-#map_canvas {
-  height: 100%;
-}
-
-.container-fluid {
-  width: 100%;
-}
-
-
-#map_canvas {
-  border-top: 50px solid #fff;
-  border-bottom: 20px solid #fff;
-  bottom:50px;
-}
-#map-container {
-  width:100%;
-}
-/* Optional: Makes the sample page fill the window.
+/* Optional: Makes the sample page fill the window. */
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
+
