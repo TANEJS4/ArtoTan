@@ -16,13 +16,11 @@ function onSubmit(e) {
         regFOrmErrorMsg.classList.add('error');
         regFOrmErrorMsg.innerHTML = 'Please enter all fields';
         setTimeout(() => regFOrmErrorMsg.remove(), 3000); // message disappears in 3 seconds
-        return false;
+    } else {
+        // clear fields
+        regFormUserName.value = '';
+        regFormEmail.value = '';
+        regFormPass.value = '';
+        regFormDOB.value = '';
     }
-
-    // clear fields
-    regFormUserName.value = '';
-    regFormEmail.value = '';
-    regFormPass.value = '';
-    regFormDOB.value = '';
-    return true;
 }
