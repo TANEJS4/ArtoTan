@@ -16,8 +16,13 @@
 		<link rel="stylesheet" type="text/css" href="/assets/style.css" />
 		<script src="/assets/script.js"></script>
 	</head>
-	<body class="bg-secondary">
-
+	<body class="bg-secondary" >
+<!-- on startup place markers -->
+<script>
+	window.onload = function (){
+		markAll();
+	}
+</script>
 	<!-- JS required for Bootstrap-->	
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -50,6 +55,8 @@
 			</div>
 		</nav>
 	</header>
+	<!-- used for JS to search for places -->
+	<label hidden id="UsrQuery">test</label>
 
 	<main >
 		<div class="d-flex justify-content-center ">
@@ -64,14 +71,14 @@
 	<div class="map-canvas" id="map">
 				<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 		<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&v=weekly"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&libraries=places&v=weekly"
 		async
 		></script>
 	</div>
 	<!-- </div> -->
 	<div class="container">
 			<div class="table-responsive">
-		<table class="table table-hover table-bordered table-dark my-2">
+		<table class="table table-hover table-borderless table-dark my-2">
 			<thead>
 				<tr>
 				<th scope="col">#</th>
@@ -84,19 +91,23 @@
 				<tr>
 					<th scope="row">A</th>
 						<td>
-							<button id="row1_label" class="btn btn-link" onclick="poiOne()">Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
+							<button id="row1_label" class="btn btn-link" onclick="poiMark({ lat: 43.26225288818, lng: -79.90583551229605 },'row1_label')" >Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
+							<button id="row1_more" class="btn btn-primary" style="float: right;" onclick="moreDetail()">More details</button>
 						</td>
 				</tr>
 				<tr>
 					<th scope="row">B</th>
 					<td>
-						<button  id="row2_label" class="btn btn-link" onclick="poiTwo()">Another Coffee Shop<span class="sr-only">(current)</span></button>
+						<button  id="row2_label" class="btn btn-link" onclick="poiMark({ lat: 43.253531005298015, lng: -79.92186482908565 },'row2_label')">Another Coffee Shop<span class="sr-only">(current)</span></button>
+						<button id="row2_more" class="btn btn-primary" style="float: right;" onclick="moreDetail('row2_label')">More details</button>
+	
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	</div>
+
 
 
 	<footer class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between" style="position: absolute; bottom: 0; width:100%">
@@ -124,6 +135,24 @@
 		document.getElementById("login").onclick = function () {
 		location.href = "/assets/registration.html";
 		};
+		document.getElementById("row1_more").onclick = function () {
+		location.href = "/assets/registration.html";
+		};
+		
+		document.getElementById("row2_more").onclick = function () {
+		location.href = "/assets/registration.html";
+		};
+	</script>
+
+	<!-- get searchBox value (from index.html)  -->
+	<script>
+	var inputTest = localStorage.getItem('objectToPass');
+	var displayData = inputTest;
+	document.getElementById('UsrQuery').innerHTML = inputTest;
+	// alert('Inserted Data' + inputTest);
+
+	localStorage.removeItem( 'objectToPass' ); // Clear the localStorage
+
 	</script>
 
 	</body>

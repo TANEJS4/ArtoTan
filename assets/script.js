@@ -1,4 +1,5 @@
-let map, infoWindow;
+let map, infoWindow, service;
+
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -6,14 +7,7 @@ function initMap() {
     zoom: 15,
     styles: styles["hide"],
   });
-  const marker1 = new google.maps.Marker({
-    position: { lat: 43.26225288818, lng: -79.90583551229605 },
-    map: map,
-  });
-  const marker2 = new google.maps.Marker({
-    position: {lat: 43.253503127472044, lng: -79.92185207027772},
-    map: map,
-  });
+
   // current location feature
   infoWindow = new google.maps.InfoWindow();
 
@@ -35,7 +29,7 @@ function initMap() {
           infoWindow.setContent("Location found.");
           infoWindow.open(map);
           map.setCenter(pos);
-          map.setZoom(15);
+          map.setZoom(13);
         },
         () => {
           handleLocationError(true, infoWindow, map.getCenter());
@@ -47,42 +41,53 @@ function initMap() {
     }
   });
 }
+// to be added
+// using JSON to print reviews
+function placesAPI() {
+  initMap();
 
+  const usrQuery = document.getElementById("UsrQuery").innerHTML;
+  const request = {
+    query :usrQuery,
+    field :["name", "geometry", "review"],
 
-function poiOne() {
-  // marker
+  };
+  service = new google.maps.places.PlacesServices(map);
+  service.findPlaceFromQuery(request, function (results, status) {
+    if (status === google.maps.places.PlacesServicesStatus.OK) {
+      for (var j = 0; j < results.length; j++){
+        createMarker(results[i]);
+      }
+      map.setCenter(result[0].geometry.location);
+    }
+  })
+}
+function markAll() {
+  initMap();
+  const marker1 = new google.maps.Marker({
+    position: { lat: 43.26225288818, lng: -79.90583551229605 },
+    map: map,
+  });
+  const marker2 = new google.maps.Marker({
+    position: {lat: 43.253503127472044, lng: -79.92185207027772},
+    map: map,
+  });
+}
+function poiMark(pos, rowID) {
   infoWindow = new google.maps.InfoWindow();
-  const locationName = document.getElementById("row1_label").innerHTML;
-  const pos = { lat: 43.26225288818, lng: -79.90583551229605 };
+  const locationName = document.getElementById(rowID).innerHTML;
+  // const pos = { lat: 43.253531005298015, lng: -79.92186482908565 };
 
   infoWindow.setPosition(pos);
   infoWindow.setContent(locationName);
   infoWindow.open(map);
+  map.setCenter(pos);
   map.setZoom(17);
   const marker1 = new google.maps.Marker({
     position: pos,
     map: map,
   });
-
 }
-
-function poiTwo() {
-  // marker
-  infoWindow = new google.maps.InfoWindow();
-  const locationName = document.getElementById("row2_label").innerHTML;
-  const pos = { lat: 43.253531005298015, lng: -79.92186482908565 };
-
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(locationName);
-  infoWindow.open(map);
-  map.setZoom(17);
-  const marker1 = new google.maps.Marker({
-    position: pos,
-    map: map,
-  });
-}
-
-
 //hide other POIs to make it less clutered
 const styles = {
   hide: [
@@ -93,6 +98,12 @@ const styles = {
   ],
 };
 
+function moreDetail(labelID) {
+  const labelName = document.getElementById(labelID).innerHTML;
+  window.open("/assets/individual_sample.html", "_self");
+  
+}
+// helper from google - did not code this! 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   // infoWindow.setPosition(pos);
   infoWindow.setContent(
@@ -101,4 +112,19 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       : "Error: Your browser doesn't support geolocation."
   );
   infoWindow.open(map);
+}
+
+
+function createMarker(place) {
+  if (!place.geometry || !place.geometry.location) return;
+
+  const marker = new google.maps.Marker({
+    map,
+    position: place.geometry.location,
+  });
+
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.setContent(place.name || "");
+    infowindow.open(map);
+  });
 }

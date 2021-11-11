@@ -68,10 +68,10 @@
 				<div class="col-md-auto p-lg-5 mx-auto">
 					<div class="col-lg-auto">
 						<!-- Form to send it to database later on -->
-						<form class="form-inline">
+						<form id="searchBox"  action="/assets/result_sample.html"class="form-inline" method="post" >
 							<div class="input-group">
-								<input class="form-control form control" type="search" placeholder="Search" aria-label="Search for coffee shops"> 
-								<button class="btn btn-dark mx-2" type="button" id="searchButton" > Search</button>
+								<input id="searchQuery" class="form-control form control" type="textbox" placeholder="Search" aria-label="Search for coffee shops"> 
+								<!-- <button class="btn btn-dark mx-2" type="submit" id="searchButton" > Search</button> -->
 							</div>
 						</form>
 					</div>
@@ -95,17 +95,14 @@
 			</div>
 		</div>
 	</main>
-	<!-- MAPS 
-	<div class="container-sm" id="map">
-	<div id="map" >
+	
+	<!-- maps  - places
+	<div class="map-canvas" id="map">
 		<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&v=weekly"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=placesAPI&v=weekly"
 		async
 		></script>
-	</div>
-	</div>
-	-->
-
+	</div> -->
 
 	<footer class="navbar navbar-dark bg-dark fixed-bottom" >
 		<ul class="nav justify-content-center">
@@ -133,6 +130,23 @@
 		location.href = "/assets/registration.html";
 		};
 	</script>
+
+	<!-- search Box JS -->
+	<script>
+		var form = document.getElementById("searchBox");
+
+      // Now, set up a submit event handler for the form
+      form.addEventListener("submit", function(){
+
+        // Only when the form has been submitted do you want the textbox value
+        var inputTest = document.getElementById('searchQuery').value;
+        localStorage.setItem( 'objectToPass', inputTest );
+
+        window.location = "/assets/result_sample.html";
+
+      });
+	</script>
+
 
 	</body>
 </html>
