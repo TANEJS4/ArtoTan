@@ -1,3 +1,8 @@
+document.getElementById("login").onclick = function () {
+    location.href = "./registration.html";
+};
+
+// Registration JS - Form Validation:
 // grabbing DOM elements
 const regForm = document.querySelector('#regForm');
 const regFOrmErrorMsg = document.querySelector('.regFOrmErrorMsg');
