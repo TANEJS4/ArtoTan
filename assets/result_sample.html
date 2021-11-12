@@ -71,7 +71,7 @@
 	<div class="map-canvas" id="map">
 				<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 		<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&libraries=places&v=weekly"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap&v=weekly"
 		async
 		></script>
 	</div>
@@ -92,7 +92,7 @@
 					<th scope="row">A</th>
 						<td>
 							<button id="row1_label" class="btn btn-link" onclick="poiMark({ lat: 43.26225288818, lng: -79.90583551229605 },'row1_label')" >Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
-							<button id="row1_more" class="btn btn-primary" style="float: right;" onclick="moreDetail()">More details</button>
+							<button id="row1_more" class="btn btn-primary" style="float: right;" onclick="moreDetail('row1_label')">More details</button>
 						</td>
 				</tr>
 				<tr>
@@ -135,12 +135,12 @@
 		document.getElementById("login").onclick = function () {
 		location.href = "/assets/registration.html";
 		};
-		// document.getElementById("row1_more").onclick = function () {
-		// location.href = "/assets/registration.html";
-		// };
+		document.getElementById("row1_more").onclick = function () {
+		location.href = "/assets/individual_sample.html";
+		};
 		
-		// document.getElementById("row2_more").onclick = function () {
-		// location.href = "/assets/registration.html";
+		document.getElementById("row2_more").onclick = function () {
+		location.href = "/assets/individual_sample.html";
 		};
 	</script>
 
