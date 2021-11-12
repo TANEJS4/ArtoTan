@@ -10,12 +10,8 @@
     <!-- CSS - Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">		<!-- Awesome fonts -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/assets/style.css">
 
-    <!-- assets for Map  -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/style.css" />
-    <script src="/assets/script.js"></script>
 </head>
 
 <body class="bg-secondary">
@@ -57,12 +53,8 @@
                 <h2><u>Decently Ok Coffee Shop</u></h2>
             </div>
 
-            <div class="map-canvas" id="map">
-                <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-                <script
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_GVZ23Wf8RyDMdb3XP_oi7erLjCG1wrM&callback=initMap"
-                        async
-                ></script>
+            <div class="row">
+                <img src="/img/coffee_near_me.png" class="rounded mx-auto d-block img-fluid" alt="googleMapAPI">
             </div>
 
             <div class="rounded mx-auto d-block">
@@ -114,6 +106,7 @@
         </div>
 
         <!-- Footer -->
+
         <footer class="navbar navbar-dark bg-dark fixed-bottom">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
@@ -132,7 +125,7 @@
     </div>
     		<script>
 			document.getElementById("login").onclick = function () {
-			location.href = "./registration.html";
+			location.href = "/assets/registration.html";
 			};
 		</script>
 </body>
