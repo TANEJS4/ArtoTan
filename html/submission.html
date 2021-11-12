@@ -38,11 +38,9 @@
                             <a class="nav-link" href="../index.html">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../html/result_sample.html">Add Location</a>
+                            <a class="nav-link" href="../html/submission.html">Add Location</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="https://github.com/TANEJS4/ArtoTan">Github</a>
                         </li>
@@ -64,12 +62,12 @@
                     <input type="text" id="addLocFormLocDesc" required>
                 </div>
                 <div>
-                    <label for="addLocFormLocLat">Latitude:</label>
+                    <label for="addLocFormLocLat">Latitude (up to 6 decimal point):</label>
                     <!-- Regex: Start with + or - and up to 6 decimals -->
                     <input type="text" id="addLocFormLocLat" pattern="^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$" required>
                 </div>
                 <div>
-                    <label for="addLocFormLocLong">Longitude:</label>
+                    <label for="addLocFormLocLong">Longitude (up to 6 decimal point): </label>
                     <!-- Regex: Start with + or - and up to 6 decimals -->
                     <input type="text" id="addLocFormLocLong" pattern="^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$" required>
                 </div>
