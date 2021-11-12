@@ -5,6 +5,7 @@
     padding: 3rem 2rem;
 }
 
+/* error message pop-up for form validation */
 .error {
     background: orangered;
     color: #fff;

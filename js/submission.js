@@ -15,6 +15,7 @@ const addLocFormLocLong = document.querySelector('#addLocFormLocLong');
 getCurrentLatLong.addEventListener('click', onGetCurrentLatLongClick);
 
 function onGetCurrentLatLongClick(e) {
+    // clear default properties
     e.preventDefault();
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -23,6 +24,7 @@ function onGetCurrentLatLongClick(e) {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 };
+                // set html values to values grabbed from Google Maps API
                 addLocFormLocLat.value = pos.lat;
                 addLocFormLocLong.value = pos.lng;
             });
