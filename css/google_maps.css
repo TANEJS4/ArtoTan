@@ -1,0 +1,19 @@
+/* always set the map height explicitly to define the size of the div element that contains the map */
+#map {
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 500px;
+}
+
+/* optional: makes the sample page fill the window */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* for review ratings */
+.checked {
+    color: yellow;
+}
