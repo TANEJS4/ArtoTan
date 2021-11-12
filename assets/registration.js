@@ -1,5 +1,5 @@
 document.getElementById("login").onclick = function () {
-    location.href = "./registration.html";
+    location.href = "/assets/registration.html";
 };
 
 // Registration JS - Form Validation:
@@ -15,7 +15,7 @@ const regFormDOB = document.querySelector('#regFormDOB');
 regForm.addEventListener('submit', onSubmit);
 
 function onSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     if(regFormUserName.value === '' || regFormEmail.value === '' || regFormPass.value === '' || !regFormDOB.value) {
         regFOrmErrorMsg.classList.add('error');
