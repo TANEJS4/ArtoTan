@@ -5,6 +5,7 @@ COMPSCI 4WW3 project
 * Shivam Taneja -  400160537
 
 
+---
 ### Live link
 
 https://artemkokhanov.github.io/
@@ -14,3 +15,9 @@ https://artemkokhanov.github.io/
 * MAIN -  https://github.com/TANEJS4/ArtoTan
 
 * SERVER - https://github.com/artemkokhanov/artemkokhanov.github.io
+
+* note incase the server link does not work, try https://artemkokhanov.github.io/index.html*
+* github pages takes time to set up *
+
+---
+*** used chrome *** 

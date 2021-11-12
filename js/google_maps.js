@@ -1,18 +1,24 @@
 let map, infoWindow, service;
-
+// initmap initiazes google map to set location
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 43.25811875074601, lng: -79.93293898594843 },
         zoom: 15,
+        // to remove all points of interests "see styles below for more details"
         styles: styles["hide"],
     });
 
     // current location feature
     infoWindow = new google.maps.InfoWindow();
 
+    // infoWindow is basically the interactable elements in google maps
+    //  other than the maps itself like zoomin button
     const locationButton = document.createElement("button");
 
     locationButton.textContent = "See nearby you";
+    // from google maps docs, TOP_CENTER is the absolute position on maps DIV 
+    // map.controls allows user interaction with maps.
+    // push basically add the parameter to the array of map controls
     map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
     locationButton.addEventListener("click", () => {
         // Try HTML5 geolocation.
@@ -22,13 +28,16 @@ function initMap() {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                 };
-
+                // setPosition marks the pos(coordinates) on infomap 
                 infoWindow.setPosition(pos);
                 infoWindow.setContent("Location found.");
                 infoWindow.open(map);
+                // centers the map lol
                 map.setCenter(pos);
                 map.setZoom(13);
             }, () => {
+                // error handler something i faced with EC2, had to add it else the 
+                // maps get error on backend without providing user info
                     handleLocationError(true, infoWindow, map.getCenter());
             });
         } else {
@@ -37,33 +46,15 @@ function initMap() {
         }
     });
 }
-
-// TODO: using JSON to print reviews
-function placesAPI() {
-    initMap();
-
-    const usrQuery = document.getElementById("UsrQuery").innerHTML;
-    const request = {
-        query :usrQuery,
-        field :["name", "geometry", "review"],
-    };
-
-    service = new google.maps.places.PlacesServices(map);
-    service.findPlaceFromQuery(request, function (results, status) {
-        if (status === google.maps.places.PlacesServicesStatus.OK) {
-            for (var j = 0; j < results.length; j++){
-                createMarker(results[i]);
-            }
-
-            map.setCenter(result[0].geometry.location);
-        }
-    });
-}
-
+// marks the two location on map
 function markAll() {
+    // initialize map
     initMap();
+    // uses google maps marker api to set marker on maps
     const marker1 = new google.maps.Marker({
+        // coordited
         position: { lat: 43.26225288818, lng: -79.90583551229605 },
+        // what map to show on (you can have more than one map element)
         map: map,
     });
 
@@ -72,11 +63,15 @@ function markAll() {
         map: map,
     });
 }
-
+// to pan over the marker location
+// input: *  pos = coordinates on html page
+//      * rowID = to identify that row (Cafe)
 function poiMark(pos, rowID) {
     infoWindow = new google.maps.InfoWindow();
+    // to get name of the cafe 
     const locationName = document.getElementById(rowID).innerHTML;
     // const pos = { lat: 43.253531005298015, lng: -79.92186482908565 };
+    // explained above
     infoWindow.setPosition(pos);
     infoWindow.setContent(locationName);
     infoWindow.open(map);
@@ -90,21 +85,31 @@ function poiMark(pos, rowID) {
 }
 
 // hide other POIs to make it less cluttered
+// google maps have document on what can be presented on map 
+// they list them down with many options like visibility on or off, color of marker
 const styles = {
-    hide: [
-        {
-            featureType: "poi.business",
-            stylers: [{ visibility: "off" }],
-        },
-    ],
+  hide: [
+    {
+      // featureType explains selects the POI
+      // https://developers.google.com/maps/documentation/javascript/poi-behavior-customization
+      featureType: "poi.business",
+      stylers: [{ visibility: "off" }],
+    },
+  ],
 };
-
+// links to button functionality on result_sample
+// basically for future implementaion to identify what element was selected so that next page can 
+// dynamically adjust itself
 function moreDetail(labelID) {
     const labelName = document.getElementById(labelID).innerHTML;
+    // _self option opens the page in the current tab or window instead of creating new window or tab
     window.open("/assets/individual_sample.html", "_self");
 }
 
-// helper from google - did not code this! 
+//! helpers 
+
+// to print error handling data
+// help from google docs 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     // infoWindow.setPosition(pos);
     infoWindow.setContent(
@@ -112,20 +117,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             ? "Error: The Geolocation service failed."
             : "Error: Your browser doesn't support geolocation."
     );
-
     infoWindow.open(map);
-}
-
-function createMarker(place) {
-    if (!place.geometry || !place.geometry.location) return;
-
-    const marker = new google.maps.Marker({
-        map,
-        position: place.geometry.location,
-    });
-
-    google.maps.event.addListener(marker, "click", () => {
-        infowindow.setContent(place.name || "");
-        infowindow.open(map);
-    });
 }
