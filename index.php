@@ -11,11 +11,11 @@
 
 	</head>
 
-	<body class="bg-secondary">
+	<body  class=" bg-secondary">
 		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
 	
 
-		<main>
+		<main >
 			<div class="container text-white">
 				<div class="row row-cols-1">
 					<!-- added p-lg-5 to add space on top (better job than margin for us) -->
@@ -27,7 +27,7 @@
 				</div>
 			</div>
 
-			<div class="container">
+			<div style="height: 100%">
 				<div class="row row-cols-1">
 					<div class="col-md-auto p-lg-5 mx-auto">
 						<div class="col-lg-auto">
@@ -50,9 +50,9 @@
 									Find shops by
 								</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="./html/result_sample.php">distance</a>
+									<a class="dropdown-item" href="/html/result_sample.php">distance</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="./html/result_sample.php">rating</a>
+									<a class="dropdown-item" href="/html/result_sample.php">rating</a>
 								</div>
 							</div>
 						</div>

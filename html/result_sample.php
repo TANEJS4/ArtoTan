@@ -51,7 +51,7 @@
 				async
 			></script>
 		</div>
-
+			<main>
 		<div class="container">
 			<div class="table-responsive">
 				<table class="table table-hover table-borderless table-dark my-2">
@@ -82,24 +82,24 @@
 				</table>
 			</div>
 		</div>
-
+		</main>
 	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html'?>
 
 
 		<!-- onclick  -->
 		<script>
 			document.getElementById("login").onclick = function () {
-			location.href = "./registration.html";
+			location.href = "./registration.php";
 			};
 			document.getElementById("row1_more").onclick = function () {
-			location.href = "./individual_sample.html";
+			location.href = "./individual_sample.php";
 			};
 			document.getElementById("row2_more").onclick = function () {
-			location.href = "./individual_sample.html";
+			location.href = "./individual_sample.php";
 			};
 		</script>
 
-		<!-- get searchBox value (from index.html) -->
+		<!-- get searchBox value (from index.php) -->
 		<script>
 			const inputTest = localStorage.getItem('objectToPass');
 			const displayData = inputTest;

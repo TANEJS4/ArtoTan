@@ -3,7 +3,7 @@
 		
 	//* check connoection database
 		$servername = "localhost";
-		$username ="root";
+		$username ="shivam";
 		$password = "";
 		$conn = new mysqli($servername, $username, $password); // Create connection
 	
