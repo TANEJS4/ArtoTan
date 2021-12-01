@@ -1,19 +1,33 @@
 <?php 
-	// session_start();
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$usrQuery = $_POST['searchQuery'];
-
-		include $_SERVER['DOCUMENT_ROOT'] . '/php/connectDB.php';
-		if (empty($usrQuery)){
-		$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
-		} else {
-			$sql = "SELECT objectID, name, latitude, longitude FROM objects where LOWER(name) LIKE LOWER(%?%)";
-			$stmt= $conne->prepare($sql);
-			$stmt->bind_param("s",$usrQuery);
-		}
 		
+	//*mysqli details for connection
+		$servername = "localhost";
+		$username ="shivam";
+		$password = "";
+		$dbname ="places";
+	
+	//* create connection
+		$conne = new mysqli($servername, $username, $password, $dbname);
+		if ($conne->connect_error){
+			die( "Connection failed to database - 2" . $conne->error) ;
+		}
 
-					
+		if (empty($usrQuery)){ //if user didnt search for anything in particular
+			$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
+			$result =  $conne->query($stmt);
+		} else { //if they did, 
+			// explained the use of this emthod in addObject.php
+			$sql = "SELECT objectID, name, latitude, longitude FROM objects where LOWER(name) LIKE ?";
+			$stmt= $conne->prepare($sql);
+			// just to lower everything to make a better search term 
+			$temp = '%' . strtolower($usrQuery) . '%';
+			$stmt->bind_param("s", $temp);
+			$stmt->execute();
+			// this method have a seperate key where it stores result data
+			$result = $stmt->get_result();
+		}
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,6 +62,7 @@
 			}
 		</script>
 
+		<!-- Header -->
 		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html';?>
 
 
@@ -82,21 +97,24 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<th scope="row">A</th>
-						<td>
+						<?php
+						if ($result->num_rows > 0){
+							while($row =  $result->fetch_assoc()){ ?>
+							
+							<tr>
+								<th scope="row"><?php echo $row["objectID"]; ?></th>
+								<td>
+									<button id="<?php echo $row['objectID']; ?>" class="btn btn-link" onclick="poiMark({ lat: <?php echo $row['latitude']; ?>, lng: <?php echo $row['longitude']; ?> },<?php echo $row['objectID']; ?>)" ><?php echo $row["name"]; ?><span class="sr-only">(current)</span></button>
+									<button id="<?php echo $row['objectID']; ?>" class="btn btn-primary" style="float: right;" onclick="moreDetail('<?php echo $row["objectID"]; ?>')">More details</button>
+								</td>
+							</tr>
+							<?php
+							}
+						} else {
+							echo "<td colspan='2'> No data available </td><td> 									<button id='noResult' class='btn btn-primary' style='float: right;' onclick='get_all()'>Get All</button> </td>";
+						}
+						?>
 
-							<button id="row1_label" class="btn btn-link" onclick="poiMark({ lat: 43.26225288818, lng: -79.90583551229605 },'row1_label')" >Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
-							<button id="row1_more" class="btn btn-primary" style="float: right;" onclick="moreDetail('row1_label')">More details</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">B</th>
-						<td>
-							<button  id="row2_label" class="btn btn-link" onclick="poiMark({ lat: 43.253531005298015, lng: -79.92186482908565 },'row2_label')">Another Coffee Shop<span class="sr-only">(current)</span></button>
-							<button id="row2_more" class="btn btn-primary" style="float: right;" onclick="moreDetail('row2_label')">More details</button>
-						</td>
-					</tr>
 					</tbody>
 				</table>
 			</div>

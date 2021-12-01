@@ -1,5 +1,5 @@
 <?php
-
+//? TO BE USED FOR COPY-PASTE 
 	//* connect to database
 		$servername = "localhost";
 		$username ="shivam";
@@ -11,8 +11,5 @@
 		if ($conne->connect_error){
 			die( "Connection failed to database - 2" . $conne->error) ;
 		}
-		
-		
-		 
-	
+
 ?>
