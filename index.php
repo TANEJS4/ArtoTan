@@ -12,7 +12,7 @@
 	</head>
 
 	<body  class=" bg-secondary">
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html';?>
 	
 
 		<main >
@@ -32,9 +32,9 @@
 					<div class="col-md-auto p-lg-5 mx-auto">
 						<div class="col-lg-auto">
 							<!-- Form to send it to database later on -->
-							<form id="searchBox" action="./html/result_sample.php" class="form-inline" method="post" >
+							<form id="searchBox" action="http://localhost/html/result_sample.php" class="form-inline" method="post" >
 								<div class="input-group">
-									<input id="searchQuery" class="form-control form control" type="text" placeholder="Search" aria-label="Search for coffee shops">
+									<input id="searchQuery" class="form-control form control" type="text" name="searchQuery" placeholder="Search" aria-label="Search for coffee shops">
 									<button class="btn btn-dark mx-2" type="submit" id="searchButton">Search</button>
 								</div>
 							</form>
@@ -61,7 +61,7 @@
 			</div>
 		</main>
 
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html'?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html';?>
 	</body>
 	<!-- Local JS -->
 	<script src="./js/index.js"></script>

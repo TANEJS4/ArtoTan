@@ -1,3 +1,20 @@
+<?php 
+	// session_start();
+	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+		$usrQuery = $_POST['searchQuery'];
+
+		include $_SERVER['DOCUMENT_ROOT'] . '/php/connectDB.php';
+		if (empty($usrQuery)){
+		$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
+		} else {
+			$sql = "SELECT objectID, name, latitude, longitude FROM objects where LOWER(name) LIKE LOWER(%?%)";
+			$stmt= $conne->prepare($sql);
+			$stmt->bind_param("s",$usrQuery);
+		}
+		
+
+					
+?>
 <!DOCTYPE html>
 <html>
 	<head lang="en">
@@ -31,11 +48,12 @@
 			}
 		</script>
 
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html';?>
 
 
 		<!-- used for JS to search for places -->
-		<label hidden id="UsrQuery">test</label>
+		<!-- MIGHT REMOVE -->
+		<label hidden  name= "UsrQuery" id="UsrQuery"></label>
 
 		<main>
 			<div class="d-flex justify-content-center ">
@@ -67,6 +85,7 @@
 					<tr>
 						<th scope="row">A</th>
 						<td>
+
 							<button id="row1_label" class="btn btn-link" onclick="poiMark({ lat: 43.26225288818, lng: -79.90583551229605 },'row1_label')" >Decently Ok Coffee Shop<span class="sr-only">(current)</span></button>
 							<button id="row1_more" class="btn btn-primary" style="float: right;" onclick="moreDetail('row1_label')">More details</button>
 						</td>
@@ -83,7 +102,7 @@
 			</div>
 		</div>
 		</main>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html'?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html';?>
 
 
 		<!-- onclick  -->
@@ -100,14 +119,22 @@
 		</script>
 
 		<!-- get searchBox value (from index.php) -->
-		<script>
+		<!-- <script>
 			const inputTest = localStorage.getItem('objectToPass');
 			const displayData = inputTest;
 			document.getElementById('UsrQuery').innerHTML = inputTest;
 			// alert('Inserted Data' + inputTest);
 			localStorage.removeItem( 'objectToPass' ); // Clear the localStorage
-		</script>
+		</script> -->
 	</body>
 	<!-- Local JS -->
 	<script src="../js/google_maps.js"></script>
+
+	<!-- end of PHP -->
+	<?php
+		$conne->close();
+		} else {
+			echo "Invalid request";
+		}
+	?>
 </html>

@@ -39,7 +39,7 @@
 
 		//? So i found this another method at https://phpdelusions.net/mysqli_examples/insert, 
 		//? it is basically a normal query but we let mysqli to add in the parameters however it deems fit
-		$sq? = "INSERT INTO objects (name, description, latitude,  longitude) VALUES (?,?,?,?)";
+		$sql = "INSERT INTO objects (name, description, latitude,  longitude) VALUES (?,?,?,?)";
 
 		//? prepare actually sends the query to db but db waits for the parameters and then executes the sql 
 		$stmt= $conne->prepare($sql);
