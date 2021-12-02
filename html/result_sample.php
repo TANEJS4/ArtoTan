@@ -1,33 +1,53 @@
 <?php 
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
-		$usrQuery = $_POST['searchQuery'];
-		
 	//*mysqli details for connection
 		$servername = "localhost";
 		$username ="shivam";
 		$password = "";
 		$dbname ="places";
-	
+
 	//* create connection
 		$conne = new mysqli($servername, $username, $password, $dbname);
 		if ($conne->connect_error){
 			die( "Connection failed to database - 2" . $conne->error) ;
 		}
 
-		if (empty($usrQuery)){ //if user didnt search for anything in particular
-			$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
-			$result =  $conne->query($stmt);
-		} else { //if they did, 
-			// explained the use of this emthod in addObject.php
-			$sql = "SELECT objectID, name, latitude, longitude FROM objects where LOWER(name) LIKE ?";
-			$stmt= $conne->prepare($sql);
-			// just to lower everything to make a better search term 
-			$temp = '%' . strtolower($usrQuery) . '%';
-			$stmt->bind_param("s", $temp);
-			$stmt->execute();
-			// this method have a seperate key where it stores result data
-			$result = $stmt->get_result();
+	//* Checks if there was a search query 
+		if (isset( $_POST['searchQuery'])){
+			$usrQuery = $_POST['searchQuery'];
+			if (empty($usrQuery)){ //if user didnt search for anything in particular
+				$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
+				$result =  $conne->query($stmt);
+			} else { //if they did, 
+				// explained the use of this emthod in addObject.php
+				$sql = "SELECT objectID, name, latitude, longitude FROM objects where LOWER(name) LIKE ?";
+				$stmt= $conne->prepare($sql);
+				// just to lower everything to make a better search term 
+				$temp = '%' . strtolower($usrQuery) . '%';
+				$stmt->bind_param("s", $temp);
+				$stmt->execute();
+				// this method have a seperate key where it stores result data
+				$result = $stmt->get_result();
+			}
 		}
+	//* in case sort options were selected
+		if(isset($_POST['sortByDistance'])){
+			echo "dropdown";
+		}
+		// using haversine formula in kms 
+		$sql = "SELECT objectID, 
+						 6371 *acos( cos(radians(latitude)) *
+						cos(radians(lat2)) *
+						cos(radians(lng2) - radians(longitude)) +
+						sin(radians(lat2)) *
+						sin(radians(latitude))
+						) AS distance,
+						name, latitude, longitude FROM objects HAVING distance < 30 ORDER BY distance LIMIT 0, 20 ";
+
+	
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
