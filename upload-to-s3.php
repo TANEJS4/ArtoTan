@@ -8,8 +8,8 @@ $s3Client = new S3Client([
 'version' => 'latest',
 'region'  => 'US East (Ohio) us-east-2',
 'credentials' => [
-'key'    => 'AKIAXNW2MRNARGLVV3GX',
-'secret' => 'FlJgX4mJVT2EGJF7kTwNkfTLEglyGA1vWqzg'
+'key'    => 'k',
+'secret' => 'secretK'
 ]
 ]);
 // Check if the form was submitted
