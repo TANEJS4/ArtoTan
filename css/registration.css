@@ -18,7 +18,39 @@
     padding-bottom: 10px;
     color: #343a40;
 }
+/* login CSS */
+#oldUserLogin {
+    padding: 2rem;
+    background: #f4f4f4;
+}
 
+#oldUserLogin label {
+    display: block;
+    color: #343a40;
+}
+
+#oldUserUsrName input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#loginButton {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    border: 0;
+    background: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+#loginButton:hover {
+    background: #343a40;
+}
 /* Registration CSS */
 #regForm {
     padding: 2rem;

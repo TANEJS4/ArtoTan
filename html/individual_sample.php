@@ -1,3 +1,6 @@
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +34,7 @@
                     markAll();
                 }
             </script>
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.php'?>
 
 
             <!-- Body -->
@@ -90,7 +93,7 @@
                 </div>
             </div>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.html'?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.php'?>
 
         </div>
         <script>

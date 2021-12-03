@@ -1,3 +1,6 @@
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+?>
 <!DOCTYPE html>
 <html>	
 	<head lang="en">
@@ -30,12 +33,29 @@
 				</li>
 				<li class="nav-item">
 					<!-- will display username -->
-					<a class="nav-link disabled" href="#" tabindex="-1">Username</a>
+
+					<button onclick="logout()" name="logoutBtn" id="logoutBtn" class="btn btn-dark" id="usrNameLabel" tabindex="-1"><?php
+					$usrnameLabelValue = "Not Logged In";
+				if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+					$usrnameLabelValue = $_SESSION["name"];
+				} echo $usrnameLabelValue;?></a>
+					
+					<form method="post" name="logout" action="../PHP/logout.php">
+					<input type="hidden" name="logoutVal" id="logoutVal" value=""> 
+					
+				</form>
 				</li>
 			</ul>
-
+				<script>
+					function logout(){
+						var temp = document.getElementById("logoutVal");
+						temp.value = "true";
+						document.getElementById("logout").submit();
+						location.reload();
+					}
+					</script>
 			<span class="navbar-text">
-				<button class="btn btn-primary" id="login" type="submit">Login</button>
+				<button class="btn btn-primary" id="login" type="submit">sign up</button>
 			</span>
 		</footer>
 

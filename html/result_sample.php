@@ -1,5 +1,5 @@
 <?php 
-
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	//*mysqli details for connection
 		$servername = "localhost";
@@ -111,7 +111,7 @@
 		</script>
 
 		<!-- Header -->
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html';?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.php';?>
 
 
 		<!-- used for JS to search for places -->
@@ -161,6 +161,7 @@
 							++$count;	
 						}
 						} else {
+							
 							echo "<td colspan='2'> No data available </td><td>
 							<button id='noResult' name='noResult' class='btn btn-primary' style='float: right;' onclick='showAllRows()' >Get All</button>
 							<form id='getAllForm' action='http://localhost/html/result_sample.php'  method='post' >
@@ -175,7 +176,7 @@
 			</div>
 		</div>
 		</main>
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html';?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';?>
 
 
 		<!-- onclick  -->
@@ -196,14 +197,7 @@
 			}
 		</script>
 
-		<!-- get searchBox value (from index.php) -->
-		<!-- <script>
-			const inputTest = localStorage.getItem('objectToPass');
-			const displayData = inputTest;
-			document.getElementById('UsrQuery').innerHTML = inputTest;
-			// alert('Inserted Data' + inputTest);
-			localStorage.removeItem( 'objectToPass' ); // Clear the localStorage
-		</script> -->
+
 	</body>
 	<!-- Local JS -->
 	<script src="../js/google_maps.js"></script>

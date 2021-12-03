@@ -1,3 +1,12 @@
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+
+?>
+<?php
+	if( $_SESSION["alert"] ==1 ){
+		echo "<script type='text/javascript'>alert('you were not logged in.Log in and then submit');</script>";
+	}	
+?>
 <!DOCTYPE html>
 <html>
 	<head lang="en">
@@ -20,7 +29,7 @@
 	</head>
 
 	<body  class=" bg-secondary">
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html';?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.php';?>
 	
 
 		<main >
@@ -40,7 +49,7 @@
 					<div class="col-md-auto p-lg-5 mx-auto">
 						<div class="col-lg-auto">
 							<!-- Form to send it to database later on -->
-							<form id="searchBox" action="http://localhost/html/result_sample.php" class="form-inline" method="post" >
+							<form id="searchBox" action="/html/result_sample.php" class="form-inline" method="post" >
 								<div class="input-group">
 									<input id="searchQuery" class="form-control form control" type="text" name="searchQuery" placeholder="Search" aria-label="Search for coffee shops">
 									<button class="btn btn-dark mx-2" type="submit" id="searchButton">Search</button>
@@ -58,7 +67,7 @@
 							<button type="submit" name="sortByRating" id="sortByRating" class="btn btn-light" onclick="setRating()">rating</button>
 									<!-- <label  id="locationLat" name="locationLat"></label>
 									<label  id="locationLong" name="locationLong" >		</label> -->
-							<form id="dropDownOptions" name="dropDownOptions" action="http://localhost/html/result_sample.php"  method="post" class="form-inline">
+							<form id="dropDownOptions" name="dropDownOptions" action="/html/result_sample.php"  method="post" class="form-inline">
 									<input type="hidden" id="locationLat" name="locationLat" value="">
 									<input type="hidden" id="locationLong" name="locationLong" value="">
 									<input type="hidden" id="ratingBool" name="ratingBool" value="">
@@ -70,7 +79,7 @@
 			</div>
 		</main>
 
-	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html';?>
+	<?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php';?>
 	</body>
 	<!-- Local JS -->
 	<script src="./js/index.js"></script>

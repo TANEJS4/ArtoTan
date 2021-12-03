@@ -1,7 +1,9 @@
 <?php
 
 // required for global sessions
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 $data = $_POST; // get data
 
@@ -24,7 +26,7 @@ if ($data['password'] !== $data['confirmPassword']) {
 }
 
 // assuming users relation exists
-$dsn = 'mysql:dbname=users;host=localhost';
+$dsn = 'mysql:dbname=artotan;host=localhost';
 $dbUser = 'root';
 $dbPassword = '';
 

@@ -1,7 +1,7 @@
 <?php
 
-// required for global sessions
-session_start();
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+
 
 // if no messages, do nothing
 if (empty($_SESSION['messages'])) {

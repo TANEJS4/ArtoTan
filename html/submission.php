@@ -1,3 +1,13 @@
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+if($_SESSION['loggedin'] ==false){
+			$_SESSION['showalert'] = 1;
+            echo "<script type='text/javascript'>alert('you were not logged in.Log in and then submit');</script>";
+            // header('Location: ../index.php');
+
+            // exit;
+		}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,7 +34,7 @@
 
     <body class="bg-secondary">
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.php'?>
 
         <main class="container-flex">
             <form id="addLocForm" method="post" action="http://localhost/php/addObject.php">
@@ -59,7 +69,7 @@
             </form>
         </main>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.html'?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . '/html/footer.php'?>
 
     </body>
     <!-- Local JS -->

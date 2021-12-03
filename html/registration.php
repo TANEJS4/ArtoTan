@@ -1,3 +1,6 @@
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -23,10 +26,30 @@
 	</head>
 
 	<body class="bg-secondary">
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.html'?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/header.php'?>
+		<div class="container-flex bg-light rounded my-2 text-center" >
+			<form method="post" name="oldUserLogin" id="oldUserLogin" action="../PHP/login.php">
+				<div class="form-group">
+				<h1 id="formTitle"> Old User?</h1><br>
+				<div>
+					<input placeholder="UserName"type="text" name="oldUserUsrName" class="form-control" id="oldUserUsrName">
+				</div>
+				<br>
 
+				<div >
+					<input placeholder="password" type="password" name="oldUserPassword" id="oldUserPassword" class="form-control">
+				</div>
+			</div>	
+			<div class="form-group">
+
+			<label >your session will logged out automattically after 5 mins </label>
+			<!-- <input type="checkbox" name="rememberme" id="rememberme" > -->
+				<button type="submit" class="btn btn-dark" name="loginButton" id="loginButton">Login here</button>
+		</div>
+			</form>
+		</div>
 		<main class="container-flex">
-            <?php require_once '../PHP/messages.php'; ?>
+            <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/PHP/messages.php'; ?>
 			<form id="regForm" action="../PHP/signup.php" method="post">
 				<h1 id="formTitle">Register</h1>
 <!--				<div class="regFormError"></div>-->
@@ -54,6 +77,6 @@
 			</form>
 		</main>
 
-		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.html'?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.php'?>
 	</body>
 </html>

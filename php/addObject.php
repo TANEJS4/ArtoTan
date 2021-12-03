@@ -1,5 +1,7 @@
 <?php
-	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST" and $_SESSION['loggedin']==true){
 		
 	//* check connoection database
 		$servername = "localhost";
@@ -17,7 +19,7 @@
 		$servername = "localhost";
 		$username ="shivam";
 		$password = "";
-		$dbname ="places";
+		$dbname ="artotan";
 	
 	//* create connection
 		$conne = new mysqli($servername, $username, $password, $dbname);
@@ -56,6 +58,8 @@
 		}
 		$conne->close(); 
 	} else {
-		echo "Invalid request";
+		echo "<script type='text/javascript'>alert('You are either not logged in or it was an invalid request. ');</script>";
+
+		// echo "Invalid request";
 	}
 ?>

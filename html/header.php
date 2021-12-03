@@ -1,3 +1,7 @@
+
+<?php
+	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+?>
 <!DOCTYPE html>
 <html>	
 	<head lang="en">
