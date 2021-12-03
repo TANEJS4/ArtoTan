@@ -1,6 +1,9 @@
 
+policy*
 xampp/*
 artotan1/
 img/*
 .idea/*
 vendor/*
+test/*
+upload/*
