@@ -53,22 +53,16 @@
 				<div class="row row-cols-1">
 					<div class="col-md-auto mx-auto">
 						<div class="col-lg-auto">
-							<form id="dropDownOptions"  action="http://localhost/html/result_sample.php"  method="post" class="form-inline">
-							<!-- <div class="input-group"> -->
-								<label> Find shops by: </label>
-									<div class="form-group">
-									<button  type="submit" name="sortByDistance" id="sortByDistance" class="btn btn-light mx-2" >distance</a>
-									<button type="submit" name="sortByRating" id="sortByRating" class="btn btn-light" >rating</a>
-							</div>
-								<!-- <button class="btn btn-dark btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Find shops by
-								</button>
-								<div class="dropdown-menu">
-									<input  type="button" name="sortByDistance" id="sortByDistance" class="dropdown-item" href="/html/result_sample.php">distance</a>
-									<div class="dropdown-divider"></div>
-									<input name="sortByRating" id="sortByRating"class="dropdown-item" href="/html/result_sample.php">rating</a>
-								</div> -->
-							<!-- </div> -->
+							<label> Find shops by: </label>
+							<button  type="submit" name="sortByDistance" id="sortByDistance" class="btn btn-light mx-2"  onclick="getUsrLocation()">distance</button>
+							<button type="submit" name="sortByRating" id="sortByRating" class="btn btn-light" onclick="setRating()">rating</button>
+									<!-- <label  id="locationLat" name="locationLat"></label>
+									<label  id="locationLong" name="locationLong" >		</label> -->
+							<form id="dropDownOptions" name="dropDownOptions" action="http://localhost/html/result_sample.php"  method="post" class="form-inline">
+									<input type="hidden" id="locationLat" name="locationLat" value="">
+									<input type="hidden" id="locationLong" name="locationLong" value="">
+									<input type="hidden" id="ratingBool" name="ratingBool" value="">
+
 							</form>
 						</div>
 					</div>

@@ -1,4 +1,5 @@
 <?php 
+
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	//*mysqli details for connection
 		$servername = "localhost";
@@ -11,7 +12,12 @@
 		if ($conne->connect_error){
 			die( "Connection failed to database - 2" . $conne->error) ;
 		}
+		
 
+		if(isset($_POST['noResultResult'])){
+			$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
+			$result =  $conne->query($stmt);
+		}
 	//* Checks if there was a search query 
 		if (isset( $_POST['searchQuery'])){
 			$usrQuery = $_POST['searchQuery'];
@@ -30,24 +36,46 @@
 				$result = $stmt->get_result();
 			}
 		}
+			if (isset( $_POST['locationLat']) or isset( $_POST['locationLong']) or isset( $_POST['ratingBool']) ){
+				$lat =  $_POST['locationLat'];
+				$long =  $_POST['locationLong'];
+				$rat = $_POST['ratingBool'];
+				if (empty($lat) or empty($long)){
+					if (empty($rat)){
+						alert("location not found -  showing all results");
+						$stmt = "SELECT objectID, name, latitude, longitude FROM objects ";
+						$result =  $conne->query($stmt);
+					}
+					else {
+						$stmt = "SELECT objectID, name, latitude, longitude FROM objects ORDER BY rating ";
+						$result =  $conne->query($stmt);
+
+					}
+				} else 
+				{
+					echo "inside dd";
+					// using haversine formula in kms 
+					$sql = "SELECT objectID, 
+							6371 *acos( cos(radians(latitude)) *
+							cos(radians(?)) *
+							cos(radians(?) - radians(longitude)) +
+							sin(radians(?)) *
+							sin(radians(latitude))
+							) AS distance,
+							name, latitude, longitude FROM objects HAVING distance < 50 ORDER BY distance LIMIT 0, 20 ";
+					$stmt= $conne->prepare($sql);
+					// just to lower everything to make a better search term 
+					$stmt->bind_param("ddd", $lat,$long,$lat);
+					$stmt->execute();
+					// this method have a seperate key where it stores result data
+					$result = $stmt->get_result();
+				}
+			}
+
 	//* in case sort options were selected
 		if(isset($_POST['sortByDistance'])){
 			echo "dropdown";
 		}
-		// using haversine formula in kms 
-		$sql = "SELECT objectID, 
-						 6371 *acos( cos(radians(latitude)) *
-						cos(radians(lat2)) *
-						cos(radians(lng2) - radians(longitude)) +
-						sin(radians(lat2)) *
-						sin(radians(latitude))
-						) AS distance,
-						name, latitude, longitude FROM objects HAVING distance < 30 ORDER BY distance LIMIT 0, 20 ";
-
-	
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -119,19 +147,26 @@
 					<tbody>
 						<?php
 						if ($result->num_rows > 0){
+							$count = 1;
 							while($row =  $result->fetch_assoc()){ ?>
 							
 							<tr>
-								<th scope="row"><?php echo $row["objectID"]; ?></th>
+								<th scope="row"><?php echo $count ?></th>
 								<td>
 									<button id="<?php echo $row['objectID']; ?>" class="btn btn-link" onclick="poiMark({ lat: <?php echo $row['latitude']; ?>, lng: <?php echo $row['longitude']; ?> },<?php echo $row['objectID']; ?>)" ><?php echo $row["name"]; ?><span class="sr-only">(current)</span></button>
 									<button id="<?php echo $row['objectID']; ?>" class="btn btn-primary" style="float: right;" onclick="moreDetail('<?php echo $row["objectID"]; ?>')">More details</button>
 								</td>
 							</tr>
 							<?php
-							}
+							++$count;	
+						}
 						} else {
-							echo "<td colspan='2'> No data available </td><td> 									<button id='noResult' class='btn btn-primary' style='float: right;' onclick='get_all()'>Get All</button> </td>";
+							echo "<td colspan='2'> No data available </td><td>
+							<button id='noResult' name='noResult' class='btn btn-primary' style='float: right;' onclick='showAllRows()' >Get All</button>
+							<form id='getAllForm' action='http://localhost/html/result_sample.php'  method='post' >
+									<input type='hidden' id='noResultResult' name='noResultResult' value=''>
+								</td>
+								</form>";
 						}
 						?>
 
@@ -154,6 +189,11 @@
 			document.getElementById("row2_more").onclick = function () {
 			location.href = "./individual_sample.php";
 			};
+			function showAllRows() {
+				var temp = document.getElementById("noResultResult");
+				temp.value = "set";
+				document.getElementById("getAllForm").submit();
+			}
 		</script>
 
 		<!-- get searchBox value (from index.php) -->
