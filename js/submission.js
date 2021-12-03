@@ -3,7 +3,7 @@ const login = document.querySelector("#login");
 login.addEventListener('click', onLoginClick);
 function onLoginClick(e) {
     e.preventDefault();
-    location.href = './registration.html';
+    location.href = './registration.php';
 }
 
 // get current latitude and longitude using Google Maps API

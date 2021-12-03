@@ -3,7 +3,7 @@ const login = document.querySelector("#login");
 login.addEventListener('click', onLoginClick);
 function onLoginClick(e) {
     e.preventDefault();
-    location.href = './registration.html';
+    location.href = './registration.php';
 }
 
 // Registration JS - Form Validation:

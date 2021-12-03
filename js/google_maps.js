@@ -84,26 +84,14 @@ function poiMark(pos, rowID) {
     });
 }
 
-// hide other POIs to make it less cluttered
-// google maps have document on what can be presented on map 
-// they list them down with many options like visibility on or off, color of marker
-const styles = {
-  hide: [
-    {
-      // featureType explains selects the POI
-      // https://developers.google.com/maps/documentation/javascript/poi-behavior-customization
-      featureType: "poi.business",
-      stylers: [{ visibility: "off" }],
-    },
-  ],
-};
 // links to button functionality on result_sample
 // basically for future implementaion to identify what element was selected so that next page can 
 // dynamically adjust itself
 function moreDetail(labelID) {
     const labelName = document.getElementById(labelID).innerHTML;
     // _self option opens the page in the current tab or window instead of creating new window or tab
-    window.open("/assets/individual_sample.html", "_self");
+
+    window.open("/html/individual_sample.php", "_self");
 }
 
 //! helpers 
@@ -119,3 +107,18 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     );
     infoWindow.open(map);
 }
+
+
+// hide other POIs to make it less cluttered
+// google maps have document on what can be presented on map 
+// they list them down with many options like visibility on or off, color of marker
+const styles = {
+    hide: [
+    {
+      // featureType explains selects the POI
+      // https://developers.google.com/maps/documentation/javascript/poi-behavior-customization
+        featureType: "poi.business",
+        stylers: [{ visibility: "off" }],
+    },
+],
+};
