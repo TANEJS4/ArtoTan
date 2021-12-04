@@ -88,10 +88,13 @@ function poiMark(pos, rowID) {
 // basically for future implementaion to identify what element was selected so that next page can 
 // dynamically adjust itself
 function moreDetail(labelID) {
+    // var id = labelID.concat('submit');
+
     const labelName = document.getElementById(labelID).innerHTML;
     // _self option opens the page in the current tab or window instead of creating new window or tab
 
-    window.open("/html/individual_sample.php", "_self");
+    // window.open("/html/individual_sample.php", "_self");
+    const formElem = document.getElementById("hiddenForm").submit();
 }
 
 //! helpers 

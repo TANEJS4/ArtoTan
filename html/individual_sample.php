@@ -1,5 +1,34 @@
 <?php
 	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
+
+    	if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	//*mysqli details for connection
+		$servername = "localhost";
+		$username ="shivam";
+		$password = "";
+		$dbname ="artotan";
+        	//* create connection
+		$conne = new mysqli($servername, $username, $password, $dbname);
+		if ($conne->connect_error){
+			die( "Connection failed to database - 2" . $conne->error) ;
+		}
+        if(isset($_POST['objectIDHidden'])){
+            $locID = $_POST['objectIDHidden'];
+            $sql1 = "SELECT * FROM reviews where locationID = ? ";
+            $stmt1= $conne->prepare($sql1);
+            $stmt1->bind_param("d", $locID);
+            $stmt1->execute();
+            // this method have a seperate key where it stores result data
+            $reviews = $stmt1->get_result();
+            
+            $sql2 = "SELECT * FROM objects where objectID = ? LIMIT 1";
+            $stmt2= $conne->prepare($sql2);
+            $stmt2->bind_param("d", $locID);
+            $stmt2->execute();
+            // this method have a seperate key where it stores result data
+            $locDetail = $stmt2->get_result();
+		}
+        }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +56,7 @@
     </head>
 
     <body class="bg-secondary">
-        <div style="background-color:#202428">
+        <!-- <div style="background-color:#202428"> -->
             <!-- on startup place markers -->
             <script>
                 window.onload = function () {
@@ -38,9 +67,18 @@
 
 
             <!-- Body -->
-            <div class="container text-center text-light">
+            <main class="bg-dark">
+            <div class="container-flex  text-center text-light">
                 <div class="d-flex justify-content-center">
-                    <h2><u>Decently Ok Coffee Shop</u></h2>
+                    <?php
+                    if($locDetail->num_rows>0){
+                        $row1 = $locDetail->fetch_assoc()
+                        ?> <h2><u><?php echo $row1['name'];?></u></h2>
+                        <?php
+                            
+                        }
+                    ?>
+                    
                 </div>
 
                 <!-- Google Maps -->
@@ -51,51 +89,54 @@
                             async
                     ></script>
                 </div>
-
-                <div class="rounded mx-auto d-block">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <h3>Review 1</h3>
-                            <p>
-                                "Decent spot"
-                            </p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <h3>Review 2</h3>
-                            <p>
-                                "Great place! Will definitely visit again!"
-                            </p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
-
-                        <div class="col-lg-4">
-                            <h3>Review 3</h3>
-                            <p>
-                                "Terrible customer service"
-                            </p>
-                            <span class="fa fa-star checked"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                        </div>
                     </div>
-                </div>
-            </div>
+                <div class="container-flex text-center text-light rounded mx-auto my-4">
+                <!-- <div class="container-flex "> -->
+                    <div class="row ">
+                        <?php 
+                            if($reviews->num_rows>0){
+                                $count=1;
+                                
+                                while($row2= $reviews->fetch_assoc()){
+                                        ?>
+                        <div class="col-lg-4">
 
+
+                                          <h2> <?php echo $row2['title']; ?></h2>
+                                            <p class="h4">
+                                                <?php echo $row2['description']; ?>
+                                            </p>
+                                            <?php 
+                                            for ($Astar = 0; $Astar < $row2['star'] ; $Astar++){
+                                                ?>
+                                                <span class="fa fa-star checked"></span>
+                                                <?php
+                                            } 
+                                            $Bstar= 5 -  $row2['star'] ;
+                                            for ($Astar = 0; $Astar < $Bstar ; $Astar++){
+                                                ?>
+                                                <span class="fa fa-star"></span>
+                                                <?php
+                                            }
+                                            ?>
+                                            <!-- <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span>
+                                            <span class="fa fa-star checked"></span> -->
+                                            <!-- <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span> -->
+                        </div>
+
+                                    <?php
+                                }
+                            }
+                            ?>
+                    </div>
+                <!-- </div> -->
+            </div>
+                        </main>
         <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.php'?>
 
-        </div>
+        <!-- </div> -->
         <script>
             document.getElementById("login").onclick = function () {
                 location.href = "./registration.php";
