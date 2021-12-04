@@ -28,7 +28,7 @@ if ($data['password'] !== $data['confirmPassword']) {
 // assuming users relation exists
 $dsn = 'mysql:dbname=artotan;host=localhost';
 $dbUser = 'root';
-$dbPassword = '';
+$dbPassword = 'e05#W-J&';
 
 // testing connection to database
 try {
