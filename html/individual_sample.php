@@ -77,9 +77,10 @@
                             
                         }
                     ?>
-                    <p> <em><?php echo "Number of reviews: " . $reviews->num_rows;?></em></p>
                 </div>
-
+                        <div>
+                                                <p> <em><?php echo "Number of reviews: " . $reviews->num_rows;?></em></p>
+                    </div>
                 <!-- Google Maps -->
                 <div class="map-canvas" id="map">
                     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
