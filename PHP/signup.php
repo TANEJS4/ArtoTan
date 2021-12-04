@@ -40,12 +40,13 @@ try {
 }
 
 // adding user to users relation
-$statement = $connection->prepare('INSERT INTO users (username, email, password) VALUES (:username, :email, :password)');
+$statement = $connection->prepare('INSERT INTO users (username, email, password, dob) VALUES (:username, :email, :password, :dob)');
 if ($statement) {
     $result = $statement->execute([
         ':username' => $data['username'],
         ':email' => $data['email'],
-        ':password' => $data['password']
+        ':password' => $data['password'],
+        ':dob' => $data['dob']
     ]);
 
     // if execution successful
