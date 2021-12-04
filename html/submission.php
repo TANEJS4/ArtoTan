@@ -1,11 +1,8 @@
 <?php
 	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
-if($_SESSION['loggedin'] ==false){
-			$_SESSION['showalert'] = 1;
-            echo "<script type='text/javascript'>alert('you were not logged in.Log in and then submit');</script>";
-            // header('Location: ../index.php');
-
-            // exit;
+    if($_SESSION['loggedin'] ==false){
+        $_SESSION['showalert'] = 1;
+        echo "<script type='text/javascript'>alert('you were not logged in.Log in and then submit');</script>";
 		}
 ?>
 <!DOCTYPE html>

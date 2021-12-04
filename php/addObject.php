@@ -5,8 +5,8 @@
 		
 	//* check connoection database
 		$servername = "localhost";
-		$username ="shivam";
-		$password = "";
+		$username ="root";
+		$password = "e05#W-J&";
 		$conn = new mysqli($servername, $username, $password); // Create connection
 	
 	//* Check connection

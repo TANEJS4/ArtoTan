@@ -10,12 +10,7 @@
 			session_unset();
 			$_SESSION = array();
 		}
-		// if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
-			// if (session_status() === PHP_SESSION_ACTIVE ){		
 
-			// 	session_unset();
-			// }session_unset();
-			// $_SESSION = array();
 	}
 	header('Location: ../index.php');
 	exit;

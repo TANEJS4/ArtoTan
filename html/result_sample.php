@@ -3,8 +3,8 @@
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	//*mysqli details for connection
 		$servername = "localhost";
-		$username ="shivam";
-		$password = "";
+		$username ="root";
+		$password = "e05#W-J&";
 		$dbname ="artotan";
 
 	//* create connection
@@ -53,7 +53,6 @@
 					}
 				} else 
 				{
-					// echo "inside dd";
 					// using haversine formula in kms 
 					$sql = "SELECT objectID, 
 							6371 *acos( cos(radians(latitude)) *

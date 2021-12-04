@@ -4,8 +4,8 @@
     	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	//*mysqli details for connection
 		$servername = "localhost";
-		$username ="shivam";
-		$password = "";
+		$username ="root";
+		$password = "e05#W-J&";
 		$dbname ="artotan";
         	//* create connection
 		$conne = new mysqli($servername, $username, $password, $dbname);
@@ -56,7 +56,6 @@
     </head>
 
     <body class="bg-secondary">
-        <!-- <div style="background-color:#202428"> -->
             <!-- on startup place markers -->
             <script>
                 window.onload = function () {
@@ -91,7 +90,6 @@
                 </div>
                     </div>
                 <div class="container-flex text-center text-light rounded mx-auto my-4">
-                <!-- <div class="container-flex "> -->
                     <div class="row ">
                         <?php 
                             if($reviews->num_rows>0){
@@ -100,30 +98,24 @@
                                 while($row2= $reviews->fetch_assoc()){
                                         ?>
                         <div class="col-lg-4">
+                            <h2> <?php echo $row2['title']; ?></h2>
+                            <p class="h4">
+                                <?php echo $row2['description']; ?>
+                            </p>
+                            <?php 
+                            for ($Astar = 0; $Astar < $row2['star'] ; $Astar++){
+                                ?>
+                                <span class="fa fa-star checked"></span>
+                                <?php
+                            } 
+                            $Bstar= 5 -  $row2['star'] ;
+                            for ($Astar = 0; $Astar < $Bstar ; $Astar++){
+                                ?>
+                                <span class="fa fa-star"></span>
+                                <?php
+                            }
+                            ?>
 
-
-                                          <h2> <?php echo $row2['title']; ?></h2>
-                                            <p class="h4">
-                                                <?php echo $row2['description']; ?>
-                                            </p>
-                                            <?php 
-                                            for ($Astar = 0; $Astar < $row2['star'] ; $Astar++){
-                                                ?>
-                                                <span class="fa fa-star checked"></span>
-                                                <?php
-                                            } 
-                                            $Bstar= 5 -  $row2['star'] ;
-                                            for ($Astar = 0; $Astar < $Bstar ; $Astar++){
-                                                ?>
-                                                <span class="fa fa-star"></span>
-                                                <?php
-                                            }
-                                            ?>
-                                            <!-- <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span>
-                                            <span class="fa fa-star checked"></span> -->
-                                            <!-- <span class="fa fa-star"></span>
-                                            <span class="fa fa-star"></span> -->
                         </div>
 
                                     <?php
@@ -131,12 +123,10 @@
                             }
                             ?>
                     </div>
-                <!-- </div> -->
             </div>
                         </main>
         <?php include $_SERVER['DOCUMENT_ROOT'] .  '/html/footer.php'?>
 
-        <!-- </div> -->
         <script>
             document.getElementById("login").onclick = function () {
                 location.href = "./registration.php";

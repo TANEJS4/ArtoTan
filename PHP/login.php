@@ -13,22 +13,12 @@
 		$username ="root";
 		$password = "e05#W-J&";
 		$dbname ="artotan";
-		// $dsn = 'mysql:dbname=artotan;host=localhost';
-		// $dbUser = 'shivam';
-		// $dbPassword = '';
-		// try {
-		// 	$connection = new PDO($dsn, $dbUser, $dbPassword);
-		// } catch (PDOException $exception) {
-		// 	$_SESSION['messages'][] = 'Connection failed: ' . $exception->getMessage();
-		// 	header('Location: ../html/registration.php'); // redirect back to registration.php
-		// 	exit; // exit script
-		// }
+
 $connection = new mysqli($servername, $username, $password, $dbname);
 		if ($connection->connect_error){
 			die( "Connection failed to database - 2" . $connection->error) ;
 		}
-// if (isset($_POST["login"]))
-// {
+
     if (!empty($_POST["oldUserUsrName"]) && !empty($_POST["oldUserPassword"]))
     {
 		echo "\ninside if";
@@ -44,9 +34,7 @@ $connection = new mysqli($servername, $username, $password, $dbname);
 
         if ($result ->num_rows > 0)
         {
-            // Saving the username and password as cookies
-            // if (!empty($_POST["rememberme"]))
-            // {
+
 				echo "\n inside remember me";
   
                 // Username is stored as cookie for 10 years as
@@ -62,22 +50,9 @@ $connection = new mysqli($servername, $username, $password, $dbname);
                 // After setting cookies the session variable will be set
                 $_SESSION["name"] = $name;
 				$_SESSION['loggedin'] = true;
-  
-            // }
-            // else
-            // {
-            //     if (isset($_COOKIE["oldUserUsrName"]))
-            //     {
-            //         setcookie("oldUserUsrName", "");
-            //     }
-            //     if (isset($_COOKIE["oldUserPassword"]))
-            //     {
-            //         setcookie("oldUserPassword", "");
-            //     }
-            // }
+
             header("location:../index.php");
         }
-	// }
         else
         {
             $message = "Invalid Login Credentials";
@@ -87,5 +62,4 @@ $connection = new mysqli($servername, $username, $password, $dbname);
     {
         $message = "Both are Required Fields. Please fill both the fields";
     }
-// }
 ?>
