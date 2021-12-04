@@ -115,14 +115,15 @@
                                 <?php
                             }
                             ?>
-                        <p> <em><?php echo "Number of reviews: " . $reviews->num_rows;?></em></p>
+                        
                         </div>
 
                                     <?php
                                     ++$count;
                                 }
                             }
-                            ?>
+                            
+                            ?><p> <em><?php echo "Number of reviews: " . $reviews->num_rows;?></em></p>
                     </div>
             </div>
                         </main>
