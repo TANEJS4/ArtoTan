@@ -8,16 +8,10 @@ COMPSCI 4WW3 project
 ---
 ### Live link
 
-https://artemkokhanov.github.io/
+* MAIN -  shivamtaneja.me or shivamtaneja.software
 
-### Github link
+* SERVER - http://3.18.231.138/
 
-* MAIN -  https://github.com/TANEJS4/ArtoTan
-
-* SERVER - https://github.com/artemkokhanov/artemkokhanov.github.io
-
-* note incase the server link does not work, try https://artemkokhanov.github.io/index.html*
-* github pages takes time to set up *
 
 ---
 *** used chrome *** 
