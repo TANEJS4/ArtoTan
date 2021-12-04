@@ -10,8 +10,8 @@
 	}
 		//* connect to database
 		$servername = "localhost";
-		$username ="shivam";
-		$password = "";
+		$username ="root";
+		$password = "e05#W-J&";
 		$dbname ="artotan";
 		// $dsn = 'mysql:dbname=artotan;host=localhost';
 		// $dbUser = 'shivam';

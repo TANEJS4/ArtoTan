@@ -17,8 +17,8 @@
 	
 	//* connect to database
 		$servername = "localhost";
-		$username ="shivam";
-		$password = "";
+		$username ="root";
+		$password = "e05#W-J&";
 		$dbname ="artotan";
 	
 	//* create connection
