@@ -154,7 +154,7 @@
 								<td>
 									<button id="<?php echo $row['objectID']; ?>" class="btn btn-link" onclick="poiMark({ lat: <?php echo $row['latitude']; ?>, lng: <?php echo $row['longitude']; ?> },<?php echo $row['objectID']; ?>)" ><?php echo $row["name"]; ?><span class="sr-only">(current)</span></button>
 									<button id="<?php echo $row['objectID']; ?>" class="btn btn-primary" style="float: right;" onclick="moreDetail('<?php echo $row["objectID"]; ?>')">More details</button>
-									<form id="hiddenForm" method="post" action="/HTML/individual_sample.php">
+									<form id="hiddenForm" method="post" action="/html/individual_sample.php">
 										<input type="hidden" name="objectIDHidden" id="objectIDHidden" value="<?php echo $row['objectID']; ?>">
 									</form>
 								</td>
