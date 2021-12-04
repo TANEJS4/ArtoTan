@@ -93,9 +93,9 @@
                     <div class="row ">
                         <?php 
                             if($reviews->num_rows>0){
-                                $count=1;
+                                $count=0;
                                 
-                                while($row2= $reviews->fetch_assoc()){
+                                while($row2= $reviews->fetch_assoc() and $count<3){
                                         ?>
                         <div class="col-lg-4">
                             <h2> <?php echo $row2['title']; ?></h2>
@@ -115,10 +115,11 @@
                                 <?php
                             }
                             ?>
-
+                        <p> <em><?php echo "Number of reviews: " . $reviews->num_rows;?></em></p>
                         </div>
 
                                     <?php
+                                    ++$count;
                                 }
                             }
                             ?>
