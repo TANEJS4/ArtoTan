@@ -1,11 +1,11 @@
 <?php 
 	require_once  $_SERVER['DOCUMENT_ROOT'] . "/PHP/sessionvar.php";
 
-	echo "\nlogin";
+	// echo "\nlogin";
 
 	if (isset($_SESSION["name"]))
 	{
-		echo "\nexited";
+		// echo "\nexited";
 		header("location:../index.php");
 	}
 		//* connect to database
@@ -21,10 +21,10 @@ $connection = new mysqli($servername, $username, $password, $dbname);
 
     if (!empty($_POST["oldUserUsrName"]) && !empty($_POST["oldUserPassword"]))
     {
-		echo "\ninside if";
+		// echo "\ninside if";
         $name = $_POST["oldUserUsrName"];
         $password = $_POST["oldUserPassword"];
-		echo $name . " " . $password;
+		// echo $name . " " . $password;
         $sql = "SELECT * FROM users WHERE username LIKE ? and password LIKE ?" ;
 
 		$stmt = $connection->prepare($sql);
@@ -35,7 +35,7 @@ $connection = new mysqli($servername, $username, $password, $dbname);
         if ($result ->num_rows > 0)
         {
 
-				echo "\n inside remember me";
+				// echo "\n inside remember me";
   
                 // Username is stored as cookie for 10 years as
                 // 10years * 365days * 24hrs * 60mins * 60secs
